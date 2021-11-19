@@ -1,12 +1,22 @@
 const express = require('express');
 const sesion = require('express-session');
+const cookies = require ('cookie-parser')
+
 const app = express();
+
+const logged = require ('./middlewares/userLoggedMiddleware')
+
+
 
 app.use(sesion({
     secret: "secretoes",
     resave: false,
     saveUninitialized: false
-}))
+})) 
+
+app.use(cookies())
+
+app.use(logged)  
 app.use(express.urlencoded({ extended: false })); //capturamos lo que viene del formulario x post
 
 app.use(3200, () => console.log('Servidor levantado en el puerto 3200'));

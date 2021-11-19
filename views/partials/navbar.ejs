@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbardark bg-black">
+    <div class="container">
+        <a class="navbar-brand" href="#">MERN Store</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#mainNavbar" aria-expanded="false" aria-controls="navbarSupperttedContent" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collpase navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a href="" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="" class="nav-link">Products</a></li>
+            </ul>
+
+            <ul class="navbar-nav align-items-center">
+
+                <% if (locals.isLogged) { %>
+                 
+                
+
+                <li class="nav-item dropdown">
+                    <a id="dropUser" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#" class="nav-link dropdown-togglee">
+                        <img src="/images/avatars/<%= locals.userLogged.avatar %>" width="40" style="border-radius: 100%">
+                        Hi <%= locals.userLogged.fullname %>>
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <a hrel="/user/profile">My Profile</a>
+                        <a hrel="/user/logout">Log out</a>
+                    </ul>
+
+                </li>
+
+                <% } else { %>
+
+                <li class="nav-item"> <a class="nav-link" href="/users/regiser">Register</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="/users/regiser">Register</a> </li>
+
+                <% } %>
+
+            </ul>
+
+
+        </div>
+    </div>
+</nav>

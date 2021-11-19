@@ -5,6 +5,9 @@ const User = require('../models/User') // para que tome los datos desde el regis
 
 const controller = {
     register: (req, res) => {
+
+        res.cookie('testing')
+
         return res.render('userRegisterForm')
     },
     processRegister: (req, res) => {
@@ -54,6 +57,12 @@ const controller = {
                 delete userToLogin.password
                 req.session.userLogged = userToLogin;
 
+
+                if(req.body.remember_user){
+                    //seteo de cookie 
+                    res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60 })
+                }
+
                 return res.redirect('/user/profile')
             }
 
@@ -76,6 +85,8 @@ const controller = {
         })
     },
     profile: (req, res) => {
+
+        
         return res.render('userProfile', {
             user: req.session.userLogged
         });
