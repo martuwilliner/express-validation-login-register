@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+</head>
+<body>
+    <div class="container my-5">
+
+
+        <div class="col-md-10">
+            <h2>Ingresar</h2>
+
+            <form action="/user/register" method="POST" enctype="multipart/form-data">
+            
+                <div class="row">
+                    <div class="col-md-6 my-1">
+                        <div class="form-group">
+                            <label><b>Correo Electrónico:</b></label>
+                            <input type="text" name="email" class="form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>" value="<%= locals.oldData? oldData.email : null %>">
+                            <% if (locals.errors && errors.email) { %>
+                                <div class="text-danger">
+                                    <%= errors.email.msg %>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        <div class="form-group">
+                            <label><b>Password:</b></label>
+                            <input type="password" name="password" class="form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>" value="<%= locals.oldData? oldData.password : null %>">
+                            <% if (locals.errors && errors.password) { %>
+                                <div class="text-danger">
+                                    <%= errors.password.msg %>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        <div class="form-group form-check">
+                            <label for="" class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="remember_user">Recordar mi Usuario
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12 my-3">
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
